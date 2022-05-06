@@ -1,5 +1,3 @@
-package project;
-
 public class DisciplinaGrade extends Disciplina{
     private Boolean ofertada;
     private Boolean barreira;

@@ -1,6 +1,3 @@
-package project;
-
-import java.awt.*;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,18 +8,21 @@ public class Main {
         List<DisciplinaGrade> ofertadas = null;
         Pedido pedido;
         String line;
+        System.out.println("Working Directory = " + System.getProperty("user.dir") + "/config/");
+        String path = System.getProperty("user.dir") + "/config/";
+
         Scanner scan = new Scanner(System.in);  // Create a Scanner object
         System.out.println(ConsoleColors.stringColor("Informações básicas sobre o aluno são: Nome, GRR (int), curso, telefone (int), email",ConsoleColors.CYAN));
         System.out.println(ConsoleColors.stringColor("Deseja inserir as informçãoes básicas manualmente ou carregar de csv? Digite", ConsoleColors.CYAN)
                 + ConsoleColors.stringColor(" m ",ConsoleColors.RED)
                 + ConsoleColors.stringColor("para manual ou",ConsoleColors.CYAN)
                 + ConsoleColors.stringColor(" c ",ConsoleColors.RED)
-                + ConsoleColors.stringColor("para CSV (path: src/config/historico.csv)",ConsoleColors.CYAN) );
+                + ConsoleColors.stringColor("para CSV ",ConsoleColors.CYAN) + "( PATH:"+ path + "historico.csv )" );
         System.out.println(ConsoleColors.stringColor("Após inicialização serão impressos informações sobre historico, grade curricular e outros.", ConsoleColors.CYAN));
 
 
         line = scan.nextLine();  // Read user input
-        if(line != "")
+        if(!line.equals(""))
             option = line.charAt(0);
         while(option != 'c' && option != 'm'){
             System.out.println(ConsoleColors.stringColor("Opção invalida",ConsoleColors.RED));
@@ -31,13 +31,13 @@ public class Main {
         if('c' == option){
             // Opção csv de inserção das informações básicas do usuario
             user = Initialization.csvInitialization();
+            if(user == null)
+                user = Initialization.manualInitialization();
             user.imprimeInformacoes();
-        }else if('m' == option){
+        }else {
             // Opção manual de inserção das informações básicas do usuario
             user = Initialization.manualInitialization();
             user.imprimeInformacoes();
-        }else {
-            user = Initialization.csvInitialization();
         }
 
         // Inicializa o historico do usuario a partir do csv
@@ -70,6 +70,13 @@ public class Main {
 
         if('s' == option){
             pedido = Initialization.jsonPedidoInitialization();
+            if (pedido == null){
+                System.out.println(ConsoleColors.stringColor("INICIANDO MANUAL:",ConsoleColors.RED));
+                pedido = new Pedido(user,"22/01");
+                pedido.listPendentes(user.getHistorico().getList(),grade);
+                ofertadas = user.materiasProximoSemestre(grade);
+                pedido.readSolicita(ofertadas);
+            }
         }else{
             pedido = new Pedido(user,"22/01");
             pedido.listPendentes(user.getHistorico().getList(),grade);
@@ -89,7 +96,7 @@ public class Main {
         while (value >= 0){
             if (value == 1){
                 pedido.salvar();
-            }else if( value == 2){
+            }else if( value == 2 && ofertadas != null){
                 pedido.readSolicita(ofertadas);
             }else
                 System.out.println(ConsoleColors.stringColor("Valor invalido",ConsoleColors.RED));

@@ -1,4 +1,3 @@
-package project;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,12 +8,13 @@ public final class Grade {
     private List<DisciplinaGrade> disciplinas;
     // Singleton
     private Grade(){
+        String path = System.getProperty("user.dir") + "/config/grade.csv";
         String line = "";
         String splitBy = ",";
         this.disciplinas = new ArrayList<DisciplinaGrade>(50);
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("src/config/grade.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {

@@ -1,5 +1,3 @@
-package project;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,19 +107,20 @@ public class Aluno {
         int reprovacao = 0;
         int faltante = 0;
         int cursadas = 0;
-        for (DisciplinaHistorico h: this.historico.getList()) {
-            if(h.getUltimoSemestreCursada().equals(semestre)){
-                //status 2 ou 3 = reprovacao
-                if( h.getStatus() == 3  ){
-                    reprovacao +=1;
-                    faltante +=1;
-                }else if (h.getStatus() == 2)
-                    reprovacao +=1;
-                else if(h.getStatus() == 1)
-                    aprovacao +=1;
-                cursadas+=1;
+        if ((this.historico != null))
+            for (DisciplinaHistorico h: this.historico.getList()) {
+                if(h.getUltimoSemestreCursada().equals(semestre)){
+                    //status 2 ou 3 = reprovacao
+                    if( h.getStatus() == 3  ){
+                        reprovacao +=1;
+                        faltante +=1;
+                    }else if (h.getStatus() == 2)
+                        reprovacao +=1;
+                    else if(h.getStatus() == 1)
+                        aprovacao +=1;
+                    cursadas+=1;
+                }
             }
-        }
         this.desempenho.setSemestre(semestre);
         this.desempenho.setAprovacoes(aprovacao);
         this.desempenho.setCursadas(cursadas);

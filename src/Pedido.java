@@ -1,6 +1,3 @@
-package project;
-
-
 import com.google.gson.Gson;
 
 import java.io.BufferedWriter;
@@ -146,6 +143,20 @@ public class Pedido {
             }
         }
 
+        float category = (float)this.desempenho.getAprovacoes()/(float)this.desempenho.getCursadas()*100;
+        System.out.println(ConsoleColors.stringColor("\nA partir do semestre anterior: ",ConsoleColors.CYAN) + this.semestre );
+        if(category > 66.0){
+            System.out.println(ConsoleColors.stringColor("Seu desempenho foi classificado como A, recomendações do colegiado para o seu pedido serão:",ConsoleColors.RED_BOLD_BRIGHT));
+            System.out.println(ConsoleColors.stringColor("--> Conceder cinco matrículas para aqueles que apresentaram bom desempenho (caso A).\n" +
+                    "anterior",ConsoleColors.CYAN));
+        }else if (category >= 50.0 && category < 66.0){
+            System.out.println(ConsoleColors.stringColor("Seu desempenho foi classificado como B, recomendações do colegiado para o seu pedido serão:",ConsoleColors.RED_BOLD_BRIGHT));
+            System.out.println(ConsoleColors.stringColor("--> Conceder quatro matrículas para casos intermediários (caso B).",ConsoleColors.CYAN));
+        }else if(category < 50.0){
+            System.out.println(ConsoleColors.stringColor("Seu desempenho foi classificado como C, recomendações do colegiado para o seu pedido serão:",ConsoleColors.RED_BOLD_BRIGHT));
+            System.out.println(ConsoleColors.stringColor("--> Conceder três matrículas para aqueles que apresentaram desempenho ruim (caso C) ",ConsoleColors.CYAN));
+        }
+
         System.out.println(ConsoleColors.stringColor("\nVocê deve digitar de 1 em 1, pelo valor do ",ConsoleColors.CYAN)
                 + ConsoleColors.stringColor("ID ",ConsoleColors.RED_BOLD_BRIGHT)
                 + ConsoleColors.stringColor("quais materias você deseja solicitar ou digitar ",ConsoleColors.CYAN)
@@ -198,21 +209,22 @@ public class Pedido {
         }
     }
     public void salvar() throws Exception{
+        String path = System.getProperty("user.dir") + "/config/";
         Gson gson = new Gson();
         String requestJson = gson.toJson(this);
         Formatter output;
 
-        File requestFile = new File("src/config/pedido.json");
+        File requestFile = new File(path + "pedido.json");
         requestFile.createNewFile(); // if file already exists will do nothing
-        BufferedWriter writerRequest = new BufferedWriter(new FileWriter("src/config/pedido.json"));
+        BufferedWriter writerRequest = new BufferedWriter(new FileWriter(path + "pedido.json"));
         writerRequest.write(requestJson);
         writerRequest.close();
         System.out.println(ConsoleColors.stringColor("JSON salvo:") + requestJson);
 
         String separator = System.getProperty("line.separator");
-        File helperFile = new File("src/config/saida.txt");
+        File helperFile = new File(path + "saida.txt");
         helperFile.createNewFile(); // if file already exists will do nothing
-        output = new Formatter("src/config/saida.txt");
+        output = new Formatter(path + "saida.txt");
 
         output.format("%-20s GRR%-10d %n",this.nome,this.grr);
         output.format("Curso:%-20s Telefone:%-15s E-mail:%-15s %n",this.curso,this.telefone,this.email);
@@ -235,8 +247,5 @@ public class Pedido {
         output.close();
 
 
-//        BufferedWriter writerSaida = new BufferedWriter(new FileWriter("src/config/saida.txt"));
-//        writerSaida.write(requestJson);
-//        writerSaida.close();
     }
 }

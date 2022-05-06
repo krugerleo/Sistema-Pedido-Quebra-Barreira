@@ -1,5 +1,3 @@
-package project;
-
 public class Desempenho {
     private String semestre;
     private int cursadas;

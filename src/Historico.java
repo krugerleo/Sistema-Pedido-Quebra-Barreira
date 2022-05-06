@@ -1,5 +1,3 @@
-package project;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,6 +9,7 @@ public class Historico {
     private List<DisciplinaHistorico> list;
     //Maybe move to initialization
     public static Historico readHistoric(){
+        String path = System.getProperty("user.dir") + "/config/historico.csv";
         System.out.println(ConsoleColors.stringColor("\nUsúario inicializado, iniciando importação de historico (path: src/config/historico.csv)",ConsoleColors.GREEN));
         String line = "";
         String splitBy = ",";
@@ -18,7 +17,7 @@ public class Historico {
         hist.list = new ArrayList<DisciplinaHistorico>(50);
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("src/config/historico.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {
@@ -28,13 +27,14 @@ public class Historico {
                 }
             }
             hist.list.sort(Comparator.comparing(DisciplinaHistorico::getPeriodo));
+            return hist;
         }
         catch(IOException e) {
             System.out.println("ERRO NA LEITURA CSV");
             e.printStackTrace();
         }
-
-        return hist;
+        hist.list = null;
+        return null;
     }
     public void imprimeDisciplinas(){
         System.out.println(ConsoleColors.stringColor("\nImprimindo Historico:",ConsoleColors.GREEN));

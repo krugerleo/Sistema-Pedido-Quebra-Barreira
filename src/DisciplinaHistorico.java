@@ -1,5 +1,3 @@
-package project;
-
 public class DisciplinaHistorico extends Disciplina{
     private Boolean cursada;
     private int status;

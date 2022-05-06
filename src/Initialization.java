@@ -1,5 +1,3 @@
-package project;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -32,12 +30,13 @@ public class Initialization {
     }
 
     public static Aluno csvInitialization() throws Exception{
+        String path = System.getProperty("user.dir") + "/config/user.csv";
         System.out.println(ConsoleColors.stringColor("O arquivo utilizado para importação é path: src/config/user.csv (no formato: nome,grr,curso,telefone,email )",ConsoleColors.CYAN));
         String line = "";
         String splitBy = ",";
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("src/config/user.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {
@@ -52,7 +51,6 @@ public class Initialization {
             System.out.println(ConsoleColors.stringColor("ERRO NA LEITURA CSV",ConsoleColors.RED_BOLD_BRIGHT));
             e.printStackTrace();
         }
-        System.out.println(ConsoleColors.stringColor("ERRO NA LEITURA CSV",ConsoleColors.RED_BOLD_BRIGHT));
         return null;
     }
     public static boolean isNumeric(String strNum) {
@@ -68,24 +66,24 @@ public class Initialization {
     }
 
     public static Pedido jsonPedidoInitialization(){
+        String path = System.getProperty("user.dir") + "/config/pedido.json";
         Pedido pedido = new Pedido();
         pedido.setBarreira(new ArrayList<Disciplina>(50));
         pedido.setSolicita(new ArrayList<Disciplina>(50));
         try {
 
-            BufferedReader br = new BufferedReader(new FileReader("src/config/pedido.json"));
+            BufferedReader br = new BufferedReader(new FileReader(path));
             Gson gson = new Gson();
 
             //Converte String JSON para objeto Java
             pedido = gson.fromJson(br, Pedido.class);
 
-
+            return pedido;
         } catch (IOException e) {
             System.out.println(ConsoleColors.stringColor("ERRO AO LER JSON",ConsoleColors.RED));
             e.printStackTrace();
-            pedido = null;
         }
 
-        return pedido;
+        return null;
     }
 }
