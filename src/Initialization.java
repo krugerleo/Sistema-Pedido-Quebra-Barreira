@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 public class Initialization {
     public static Aluno manualInitialization(){
+        int grr = 01010101;
         Scanner scan = new Scanner(System.in);  // Create a Scanner object
         System.out.println(ConsoleColors.stringColor("Prenchimento manual: Digite seu nome:", ConsoleColors.CYAN));
         String nome = scan.nextLine();  // Read user input
@@ -21,22 +23,38 @@ public class Initialization {
         String email = scan.nextLine();
 
         System.out.println(ConsoleColors.stringColor("Digite seu GRR (apenas números):",ConsoleColors.CYAN));
-        int grr = scan.nextInt();
+        try {
+            grr = scan.nextInt();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         Aluno user = new Aluno(nome,grr,curso,telefone,email);
         user.imprimeInformacoes();
 
         return user;
     }
+    public static void createFolder() throws Exception{
+        Path path = Path.getInstance();
+        String directoryName = path.getPath();
+
+        File directory = new File(directoryName);
+
+        if (!directory.exists() ){
+            System.out.println("Existe" + directoryName);
+            directory.mkdir();
+        }
+    }
 
     public static Aluno csvInitialization() throws Exception{
-        String path = System.getProperty("user.dir") + "/config/user.csv";
+        Path path = Path.getInstance();
         System.out.println(ConsoleColors.stringColor("O arquivo utilizado para importação é path: src/config/user.csv (no formato: nome,grr,curso,telefone,email )",ConsoleColors.CYAN));
         String line = "";
         String splitBy = ",";
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new FileReader(path.getPath() + "user.csv"));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {
@@ -66,13 +84,13 @@ public class Initialization {
     }
 
     public static Pedido jsonPedidoInitialization(){
-        String path = System.getProperty("user.dir") + "/config/pedido.json";
+        Path path = Path.getInstance();
         Pedido pedido = new Pedido();
         pedido.setBarreira(new ArrayList<Disciplina>(50));
         pedido.setSolicita(new ArrayList<Disciplina>(50));
         try {
 
-            BufferedReader br = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new FileReader(path.getPath() + "pedido.json"));
             Gson gson = new Gson();
 
             //Converte String JSON para objeto Java

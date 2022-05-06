@@ -1,0 +1,16 @@
+disciplina,periodo,cursado,aprovado,semestre
+CI1001 – Programação 1 (requer CI1055),1,s,s,21/01
+CI1002 – Programação 2 (requer CI1001),2,s,n,21/02
+CI1003 – Introdução à Ciência da Computação,1,s,f,21/02
+CI1055 – Algoritmos e Estruturas de Dados 1,1,s,s,21/01
+CI1056 – Algoritmos e Estruturas de Dados 2 (requer CI1055),2,s,s,21/02
+CI1057 – Algoritmos e Estruturas de Dados 3 (requer CI1056),3,s,f,22/01
+CI1068 – Circuitos Digitais,1,s,f,21/01
+CI1210 – Projetos Digitais e Microprocessadores (requer CI1068),2,s,s,22/01
+CI1212 – Arquitetura de Computadores (requer CI1210),3,n,n,Null
+CI1237 – Matemática Discreta (requer CM304),3,n,n,Null
+CE009 – Introdução à Estatística,2,s,f,22/01
+CMA111 – Cálculo 1A,1,s,s,22/01
+CMA211 – Cálculo 2A (requer CMA111),2,n,n,Null
+CM303 – Introdução à Geometria Analítica e Álgebra Linear,3,n,n,Null
+CM304 – Complementos de Matemática,2,n,n,Null

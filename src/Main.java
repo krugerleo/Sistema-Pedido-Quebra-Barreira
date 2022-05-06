@@ -8,9 +8,8 @@ public class Main {
         List<DisciplinaGrade> ofertadas = null;
         Pedido pedido;
         String line;
-        System.out.println("Working Directory = " + System.getProperty("user.dir") + "/config/");
-        String path = System.getProperty("user.dir") + "/config/";
-
+        Path path = Path.getInstance(System.getProperty("user.dir") + "/config/");
+        Initialization.createFolder();
         Scanner scan = new Scanner(System.in);  // Create a Scanner object
         System.out.println(ConsoleColors.stringColor("Informações básicas sobre o aluno são: Nome, GRR (int), curso, telefone (int), email",ConsoleColors.CYAN));
         System.out.println(ConsoleColors.stringColor("Deseja inserir as informçãoes básicas manualmente ou carregar de csv? Digite", ConsoleColors.CYAN)

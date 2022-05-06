@@ -9,7 +9,7 @@ public class Historico {
     private List<DisciplinaHistorico> list;
     //Maybe move to initialization
     public static Historico readHistoric(){
-        String path = System.getProperty("user.dir") + "/config/historico.csv";
+        Path path = Path.getInstance();
         System.out.println(ConsoleColors.stringColor("\nUsúario inicializado, iniciando importação de historico (path: src/config/historico.csv)",ConsoleColors.GREEN));
         String line = "";
         String splitBy = ",";
@@ -17,7 +17,7 @@ public class Historico {
         hist.list = new ArrayList<DisciplinaHistorico>(50);
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new FileReader(path.getPath() + "historico.csv"));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {

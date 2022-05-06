@@ -209,22 +209,22 @@ public class Pedido {
         }
     }
     public void salvar() throws Exception{
-        String path = System.getProperty("user.dir") + "/config/";
+        Path path = Path.getInstance();
         Gson gson = new Gson();
         String requestJson = gson.toJson(this);
         Formatter output;
 
-        File requestFile = new File(path + "pedido.json");
+        File requestFile = new File(path.getPath() + "pedido.json");
         requestFile.createNewFile(); // if file already exists will do nothing
-        BufferedWriter writerRequest = new BufferedWriter(new FileWriter(path + "pedido.json"));
+        BufferedWriter writerRequest = new BufferedWriter(new FileWriter(path.getPath() + "pedido.json"));
         writerRequest.write(requestJson);
         writerRequest.close();
         System.out.println(ConsoleColors.stringColor("JSON salvo:") + requestJson);
 
         String separator = System.getProperty("line.separator");
-        File helperFile = new File(path + "saida.txt");
+        File helperFile = new File(path.getPath() + "saida.txt");
         helperFile.createNewFile(); // if file already exists will do nothing
-        output = new Formatter(path + "saida.txt");
+        output = new Formatter(path.getPath() + "saida.txt");
 
         output.format("%-20s GRR%-10d %n",this.nome,this.grr);
         output.format("Curso:%-20s Telefone:%-15s E-mail:%-15s %n",this.curso,this.telefone,this.email);

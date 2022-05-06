@@ -8,13 +8,13 @@ public final class Grade {
     private List<DisciplinaGrade> disciplinas;
     // Singleton
     private Grade(){
-        String path = System.getProperty("user.dir") + "/config/grade.csv";
+        Path path = Path.getInstance();
         String line = "";
         String splitBy = ",";
         this.disciplinas = new ArrayList<DisciplinaGrade>(50);
         try {
             //parsing a CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new FileReader(path.getPath() + "grade.csv"));
             while ((line = br.readLine()) != null)
             //returns a Boolean value
             {
