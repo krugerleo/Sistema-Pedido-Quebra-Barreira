@@ -1,0 +1,23 @@
+Gerivaldo costa      GRR20070001   
+Curso:Ciência da Computação Telefone:(41) 97070-7070 E-mail:thebeastgerivaldo@foo.bar 
+
+Materias pendentendes na barreira: 
+CMA211 – Cálculo 2A (requer CMA111) 
+CM304 – Complementos de Matemática 
+CI1212 – Arquitetura de Computadores (requer CI1210) 
+CI1237 – Matemática Discreta (requer CM304) 
+CM303 – Introdução à Geometria Analítica e Álgebra Linear 
+
+Quantidade de obrigatorias ainda precisa cursar: 26 
+
+Materias solicitadas: 
+CI1162 – Engenharia de Requisitos 
+CI1211 – Construção de Compiladores 
+CI1215 – Sistemas Operacionais (requer CI1064) 
+CI1218 – Bancos de Dados 
+
+Desempenho ultimo semestres 22/01 
+Quantidade de materias cursada: 4 
+Quantidade de aprovações: 2 
+Porcentagem de aprovação: 50,000000 
+Reprovações por falta: 2 
