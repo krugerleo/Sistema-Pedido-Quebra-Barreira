@@ -1,0 +1,37 @@
+disciplina,barreira,periodo,ofertada
+CI1001 – Programação 1 (requer CI1055),s,1,s
+CI1002 – Programação 2 (requer CI1001),s,2,n
+CI1003 – Introdução à Ciência da Computação,s,1,s
+CI1055 – Algoritmos e Estruturas de Dados 1,s,1,s
+CI1056 – Algoritmos e Estruturas de Dados 2 (requer CI1055),s,2,n
+CI1057 – Algoritmos e Estruturas de Dados 3 (requer CI1056),s,3,n
+CI1068 – Circuitos Digitais,s,1,s
+CI1210 – Projetos Digitais e Microprocessadores (requer CI1068),s,2,n
+CI1212 – Arquitetura de Computadores (requer CI1210),s,3,n
+CI1237 – Matemática Discreta (requer CM304),s,3,s
+CE009 – Introdução à Estatística,s,2,s
+CMA111 – Cálculo 1A,s,1,s
+CMA211 – Cálculo 2A (requer CMA111),s,2,s
+CM303 – Introdução à Geometria Analítica e Álgebra Linear,s,3,s
+CM304 – Complementos de Matemática,s,2,s
+CI1005 – Qualidade de Software (requer CI1163),n,4,n
+CI1007 – Segurança Computacional,n,4,s
+CI1058 – Redes de Computadores 1,n,4,n
+CI1059 – Introdução à Teoria da Computação,n,4,n
+CI1061 – Redes de Computadores 2 (requer CI1058),n,4,s
+CI1062 – Paradigmas de Programação,n,5,s
+CI1064 – Software Básico,n,5,n
+CI1065 – Algoritmos e Teoria dos Grafos (requer CI1165),n,5,n
+CI1100 – Estágio Supervisionado,n,5,s
+CI1162 – Engenharia de Requisitos,n,5,s
+CI1163 – Design de Software (requer CI1062 e CI1162),n,6,n
+CI1164 – Introdução à Computação Científica,n,6,n
+CI1165 – Análise de Algoritmos,n,6,n
+CI1209 – Inteligência Artificial,n,6,n
+CI1211 – Construção de Compiladores,n,7,s
+CI1215 – Sistemas Operacionais (requer CI1064),n,7,s
+CI1218 – Bancos de Dados,n,7,s
+CI1221 – Engenharia de Software (requer CI1163),n,7,s
+CI1238 – Otimização,n,8,n
+CI1316 – Programação Paralela,n,8,n
+CI1350 – Interação Humano-computador,n,8,n
